@@ -73,3 +73,11 @@
 <script setup>
   //
 </script>
+
+
+<style scoped lang="scss">
+h1{
+  background-color: pink;
+      color:green;
+}
+</style>
