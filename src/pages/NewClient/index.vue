@@ -54,7 +54,8 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useClientsStore } from '@/store/clientsStore' 
+import { useClientsStore } from '@/store/clientsStore'
+import { useRouter } from 'vue-router'
 
 const valid = ref(false)
 const client = ref({
@@ -89,12 +90,14 @@ const emailRules = [
 ]
 
 const clientsStore = useClientsStore()
+const router = useRouter()
 
 const createClient = () => {
   clientsStore.createClient(client.value)
   console.log('Creating client...', client.value)
   console.log('Clients after creation:', clientsStore.clients)
   resetClient()
+  router.push('/')
 }
 
 const resetClient = () => {
