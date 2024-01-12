@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { v4 as uuidv4 } from 'uuid';
 
 export const useClientsStore = defineStore('clients', {
   state: () => ({
@@ -9,6 +10,7 @@ export const useClientsStore = defineStore('clients', {
         phone: 987654321,
         email: 'client1@email.com',
         active: true,
+        id: uuidv4(),
       },
       {
         name: 'Client 2',
@@ -16,6 +18,7 @@ export const useClientsStore = defineStore('clients', {
         phone: 123456789,
         email: 'client2@email.com',
         active: true,
+        id: uuidv4(),
       },
       {
         name: 'Client 3',
@@ -23,13 +26,14 @@ export const useClientsStore = defineStore('clients', {
         phone: 111111111,
         email: 'client3@email.com',
         active: true,
+        id: uuidv4(),
       },
     ],
   }),
 
   actions: {
     createClient(newClient) {
-      this.clients.push(newClient);
+      this.clients.push({id: uuidv4(), ...newClient});
     },
 
     updateClient(updatedClient) {
