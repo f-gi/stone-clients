@@ -1,38 +1,39 @@
-<!-- ClientItem.vue -->
-
 <template>
-    <v-card>
-      <v-list>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title class="headline text-h6 mb-1">{{ client.name }}</v-list-item-title>
-            <v-list-item-subtitle>Document: {{ client.document }}</v-list-item-subtitle>
-            <v-list-item-subtitle>Phone: {{ client.phone }}</v-list-item-subtitle>
-            <v-list-item-subtitle>Email: {{ client.email }}</v-list-item-subtitle>
-            <v-list-item-subtitle>Active: {{ client.active ? 'Yes' : 'No' }}</v-list-item-subtitle>
-          </v-list-item-content>
-          <v-card-actions>
-        <!-- <router-link :to="{ name: 'editarCliente', params: { id: client.document }}">Edit</router-link>
-        <router-link :to="{ name: 'linkarProdutos', params: { id: client.document }}">Link Products</router-link> -->
-        <v-btn  @click="$emit('toggle-status', client.document)">
+  <v-card>
+    <v-list-item>
+      <v-list-item-content>
+        <v-list-item-title class="headline text-h6 mb-1">
+          {{ client.name }}
+        </v-list-item-title>
+        <div class="info-item">
+          <strong>Document:</strong> {{ client.document }}
+        </div>
+        <div class="info-item">
+          <strong>Phone:</strong> {{ client.phone }}
+        </div>
+        <div class="info-item">
+          <strong>Email:</strong> {{ client.email }}
+        </div>
+        <div class="info-item">
+          <strong>Active:</strong> {{ client.active ? 'Yes' : 'No' }}
+        </div>
+      </v-list-item-content>
+      <v-card-actions>
+        <v-btn @click="$emit('toggle-status', client.document)">
           {{ client.active ? 'Deactivate' : 'Activate' }}
         </v-btn>
       </v-card-actions>
-        </v-list-item>
-      </v-list>
-    </v-card>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      client: Object, 
-    },
-    methods: {
+    </v-list-item>
+  </v-card>
+</template>
+
+<script>
+export default {
+  props: {
+    client: Object,
   },
-  };
-  </script>
-  
-  <style scoped>
-  </style>
-  
+  methods: {},
+}
+</script>
+
+<style scoped></style>
