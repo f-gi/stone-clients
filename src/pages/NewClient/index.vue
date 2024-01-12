@@ -52,55 +52,59 @@
   </v-form>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      valid: false,
-      client: {
-        name: '',
-        phone: '',
-        document: '',
-        email: '',
-        active: false,
-      },
-      nameRules: [
-        (value) => !!value || 'Name is required',
-        (value) =>
-          /^[a-zA-Z\s]{3,}$/.test(value) ||
-          'Name must contain only letters and have a minimum length of 3',
-      ],
-      phoneRules: [
-        (value) => !!value || 'Phone is required',
-        (value) =>
-          /^[0-9]{10,11}$/.test(value) ||
-          'Invalid phone format (e.g., 99123456789)',
-      ],
-      documentRules: [
-        (value) => !!value || 'Document is required',
-        (value) => /^[0-9]{11}$/.test(value) || 'Invalid document format (11 digits)',
-      ],
-      emailRules: [
-        (value) => !!value || 'Email is required',
-        (value) => /.+@.+\..+/.test(value) || 'Invalid email format',
-      ],
-    }
-  },
-  methods: {
-    createClient() {
-      console.log('Creating client...', this.client)
-      this.resetClient()
-    },
-    resetClient() {
-      this.client = {
-        name: '',
-        phone: '',
-        document: '',
-        email: '',
-        active: false,
-      }
-    },
-  },
+<script setup>
+import { ref } from 'vue'
+import { useClientsStore } from '@/store/clientsStore' 
+
+const valid = ref(false)
+const client = ref({
+  name: '',
+  phone: '',
+  document: '',
+  email: '',
+  active: false,
+})
+
+const nameRules = [
+  (value) => !!value || 'Name is required',
+  (value) =>
+    /^[a-zA-Z\s]{3,}$/.test(value) ||
+    'Name must contain only letters and have a minimum length of 3',
+]
+
+const phoneRules = [
+  (value) => !!value || 'Phone is required',
+  (value) =>
+    /^[0-9]{10,11}$/.test(value) || 'Invalid phone format (e.g., 99123456789)',
+]
+
+const documentRules = [
+  (value) => !!value || 'Document is required',
+  (value) => /^[0-9]{11}$/.test(value) || 'Invalid document format (11 digits)',
+]
+
+const emailRules = [
+  (value) => !!value || 'Email is required',
+  (value) => /.+@.+\..+/.test(value) || 'Invalid email format',
+]
+
+const clientsStore = useClientsStore()
+
+const createClient = () => {
+  clientsStore.createClient(client.value)
+  console.log('Creating client...', client.value)
+  console.log('Clients after creation:', clientsStore.clients)
+  resetClient()
+}
+
+const resetClient = () => {
+  client.value = {
+    name: '',
+    phone: '',
+    document: '',
+    email: '',
+    active: false,
+  }
 }
 </script>
 
