@@ -38,10 +38,10 @@ export const useClientsStore = defineStore('clients', {
 
     updateClient(updatedClient) {
       const index = this.clients.findIndex(
-        (client) => client.document === updatedClient.document,
+        (client) => client.id === updatedClient.id,
       )
       if (index !== -1) {
-        this.clients[index] = updatedClient
+        this.clients[index] = { ...this.clients[index], ...updatedClient }
       }
     },
 

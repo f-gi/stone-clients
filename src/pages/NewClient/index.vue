@@ -3,7 +3,7 @@
     <v-container>
       <v-row>
         <v-col cols="12">
-          <h1>Create Client</h1>
+          <h1>{{ isEditing ? 'Edit Client' : 'Create Client' }}</h1>
         </v-col>
       </v-row>
       <v-row>
@@ -43,8 +43,8 @@
           <v-checkbox v-model="client.active" label="Active"></v-checkbox>
         </v-col>
         <v-col cols="12">
-          <v-btn @click="createClient" :disabled="!valid" color="primary">
-            Create Client
+          <v-btn @click="saveClient" :disabled="!valid" color="primary">
+            {{ isEditing ? 'Update Client' : 'Create Client' }}
           </v-btn>
         </v-col>
       </v-row>
@@ -53,9 +53,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useClientsStore } from '@/store/clientsStore'
 import { useRouter } from 'vue-router'
+
+const clientsStore = useClientsStore()
+const router = useRouter()
+const isEditing = ref(false)
 
 const valid = ref(false)
 const client = ref({
@@ -89,11 +93,12 @@ const emailRules = [
   (value) => /.+@.+\..+/.test(value) || 'Invalid email format',
 ]
 
-const clientsStore = useClientsStore()
-const router = useRouter()
-
-const createClient = () => {
-  clientsStore.createClient(client.value)
+const saveClient = () => {
+  if (isEditing.value) {
+    clientsStore.updateClient(client.value)
+  } else {
+    clientsStore.createClient(client.value)
+  }
   resetClient()
   router.push('/')
 }
@@ -107,6 +112,17 @@ const resetClient = () => {
     active: false,
   }
 }
+
+onMounted(() => {
+  const routeClientId = router.currentRoute.value.params.id
+  if (routeClientId) {
+    const existingClient = clientsStore.clients.find((c) => c.id === routeClientId)
+    if (existingClient) {
+      client.value = { ...existingClient }
+      isEditing.value = true
+    }
+  }
+})
 </script>
 
 <style scoped></style>
