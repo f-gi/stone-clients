@@ -5,18 +5,33 @@ export const useProductsStore = defineStore('products', {
   state: () => ({
     products: [
       {
-        name: 'Product 1',
+        name: 'Smartphone Galaxy S21',
         active: true,
         id: uuidv4(),
       },
       {
-        name: 'Product 2',
+        name: 'Laptop Dell XPS 13',
         active: true,
         id: uuidv4(),
       },
       {
-        name: 'Product 3',
+        name: 'Coffee Maker Pro',
         active: false,
+        id: uuidv4(),
+      },
+      {
+        name: 'Bluetooth Earbuds',
+        active: true,
+        id: uuidv4(),
+      },
+      {
+        name: 'Gaming Chair GT5000',
+        active: false,
+        id: uuidv4(),
+      },
+      {
+        name: '4K Ultra HD Smart TV',
+        active: true,
         id: uuidv4(),
       },
     ],
@@ -28,14 +43,18 @@ export const useProductsStore = defineStore('products', {
     },
 
     updateProduct(updatedProduct) {
-      const index = this.products.findIndex((product) => product.id === updatedProduct.id);
+      const index = this.products.findIndex(
+        (product) => product.id === updatedProduct.id,
+      )
       if (index !== -1) {
-        this.products[index] = { ...this.products[index], ...updatedProduct };
+        this.products[index] = { ...this.products[index], ...updatedProduct }
       }
     },
 
     deleteProduct(productId) {
-      this.products = this.products.filter((product) => product.id !== productId)
+      this.products = this.products.filter(
+        (product) => product.id !== productId,
+      )
     },
 
     toggleProductStatus(productId) {
