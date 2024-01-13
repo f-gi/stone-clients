@@ -1,5 +1,5 @@
-import { defineStore } from 'pinia';
-import { v4 as uuidv4 } from 'uuid';
+import { defineStore } from 'pinia'
+import { v4 as uuidv4 } from 'uuid'
 
 export const useClientsStore = defineStore('clients', {
   state: () => ({
@@ -25,7 +25,7 @@ export const useClientsStore = defineStore('clients', {
         document: 555555555,
         phone: 111111111,
         email: 'client3@email.com',
-        active: true,
+        active: false,
         id: uuidv4(),
       },
     ],
@@ -33,18 +33,27 @@ export const useClientsStore = defineStore('clients', {
 
   actions: {
     createClient(newClient) {
-      this.clients.push({id: uuidv4(), ...newClient});
+      this.clients.push({ id: uuidv4(), ...newClient })
     },
 
     updateClient(updatedClient) {
-      const index = this.clients.findIndex(client => client.document === updatedClient.document);
+      const index = this.clients.findIndex(
+        (client) => client.document === updatedClient.document,
+      )
       if (index !== -1) {
-        this.clients[index] = updatedClient;
+        this.clients[index] = updatedClient
       }
     },
 
-    deleteClient(clientDocument) {
-      this.clients = this.clients.filter(client => client.document !== clientDocument);
+    deleteClient(clientId) {
+      this.clients = this.clients.filter((client) => client.id !== clientId)
+    },
+
+    toggleClientStatus(clientId) {
+      const client = this.clients.find((c) => c.id === clientId)
+      if (client) {
+        client.active = !client.active
+      }
     },
   },
-});
+})
