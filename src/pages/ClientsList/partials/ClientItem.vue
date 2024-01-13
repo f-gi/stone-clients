@@ -24,10 +24,12 @@
       </v-card-actions>
     </v-list-item>
     <DeleteModal
-      :showDeleteModal="showDeleteModal"
+      :showModal="showDeleteModal"
+      dialogTitle="Confirm Delete"
+      :dialogText="`Are you sure you want to delete the item ${client.name}?`"
       :clientName="client.name"
-      @confirm-delete="handleDeleteClient"
-      @cancel-delete="showDeleteModal = false"
+      @confirm="handleDeleteClient"
+      @cancel="showDeleteModal = false"
     />
   </v-card>
 </template>
@@ -36,7 +38,7 @@
 import { ref, defineProps, watch } from 'vue'
 import { useClientsStore } from '@/store/clientsStore'
 import { useRouter } from 'vue-router'
-import DeleteModal from './DeleteModal.vue'
+import DeleteModal from '@/components/Modals/Confirm.vue'
 
 const clientsStore = useClientsStore()
 const router = useRouter()

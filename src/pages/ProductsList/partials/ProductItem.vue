@@ -20,11 +20,12 @@
         <v-btn variant="outlined" @click="showDeleteModal = true">Delete</v-btn>
       </v-card-actions>
     </v-list-item>
-    <ProductDeleteModal
-      :showDeleteModal="showDeleteModal"
-      :productName="product.name"
-      @confirm-delete="handleDeleteProduct"
-      @cancel-delete="showDeleteModal = false"
+    <DeleteModal
+      :showModal="showDeleteModal"
+      dialogTitle="Confirm Delete"
+      :dialogText="`Are you sure you want to delete the item ${product.name}?`"
+      @confirm="handleDeleteProduct"
+      @cancel="showDeleteModal = false"
     />
   </v-card>
 </template>
@@ -33,7 +34,7 @@
 import { ref, defineProps, watch } from 'vue'
 import { useProductsStore } from '@/store/productsStore'
 import { useRouter } from 'vue-router'
-import ProductDeleteModal from './ProductDeleteModal.vue'
+import DeleteModal from '@/components/Modals/Confirm.vue'
 
 const productsStore = useProductsStore()
 const router = useRouter()

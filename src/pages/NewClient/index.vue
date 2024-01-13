@@ -94,8 +94,6 @@ const router = useRouter()
 
 const createClient = () => {
   clientsStore.createClient(client.value)
-  console.log('Creating client...', client.value)
-  console.log('Clients after creation:', clientsStore.clients)
   resetClient()
   router.push('/')
 }
