@@ -19,6 +19,7 @@
           class="ml-2"
           color="primary"
         />
+        <v-btn variant="outlined" @click="addProducts">Add Products</v-btn>
         <v-btn variant="outlined" @click="editClient">Edit</v-btn>
         <v-btn variant="outlined" @click="showDeleteModal = true">Delete</v-btn>
       </v-card-actions>
@@ -59,6 +60,10 @@ const handleDeleteClient = () => {
 
 const toggleClientStatus = () => {
   clientsStore.toggleClientStatus(props.client.id)
+}
+
+const addProducts = () => {
+  router.push(`/add-products/${props.client.id}`)
 }
 
 watch(

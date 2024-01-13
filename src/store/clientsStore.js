@@ -7,9 +7,10 @@ export const useClientsStore = defineStore('clients', {
       {
         name: 'John Doe',
         document: 12345678901,
-        phone: '987654321',
+        phone: '1234564790',
         email: 'john.doe@email.com',
         active: true,
+        products: [],
         id: uuidv4(),
       },
       {
@@ -18,6 +19,7 @@ export const useClientsStore = defineStore('clients', {
         phone: '1234567890',
         email: 'jane.smith@email.com',
         active: true,
+        products: [],
         id: uuidv4(),
       },
       {
@@ -26,6 +28,7 @@ export const useClientsStore = defineStore('clients', {
         phone: '1111111111',
         email: 'robert.johnson@email.com',
         active: false,
+        products: [],
         id: uuidv4(),
       },
       {
@@ -34,6 +37,7 @@ export const useClientsStore = defineStore('clients', {
         phone: '1234567890',
         email: 'maria.silva@email.com',
         active: true,
+        products: [],
         id: uuidv4(),
       },
       {
@@ -42,6 +46,7 @@ export const useClientsStore = defineStore('clients', {
         phone: '9876543210',
         email: 'carlos.santos@email.com',
         active: false,
+        products: [],
         id: uuidv4(),
       },
       {
@@ -50,6 +55,7 @@ export const useClientsStore = defineStore('clients', {
         phone: '11111111111',
         email: 'amanda.oliveira@email.com',
         active: true,
+        products: [],
         id: uuidv4(),
       },
     ],
@@ -78,6 +84,18 @@ export const useClientsStore = defineStore('clients', {
       if (client) {
         client.active = !client.active
       }
+    },
+
+    addProductsToClient(clientId, productIds) {
+      const client = this.clients.find((c) => c.id === clientId)
+      if (client) {
+        client.products = [...client.products, ...productIds]
+      }
+    },
+
+    getClientProducts(clientId) {
+      const client = this.clients.find((c) => c.id === clientId);
+      return client ? [...client.products] : [];
     },
   },
 })
