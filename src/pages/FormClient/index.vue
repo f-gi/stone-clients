@@ -10,7 +10,7 @@
         <v-col cols="12" md="6">
           <v-text-field
             v-model="client.name"
-            :rules="nameRules"
+            :rules="rules.name"
             label="Name"
             required
           ></v-text-field>
@@ -18,7 +18,7 @@
         <v-col cols="12" md="6">
           <v-text-field
             v-model="client.phone"
-            :rules="phoneRules"
+            :rules="rules.phone"
             label="Phone"
             required
           ></v-text-field>
@@ -26,7 +26,7 @@
         <v-col cols="12" md="6">
           <v-text-field
             v-model="client.document"
-            :rules="documentRules"
+            :rules="rules.document"
             label="Document"
             required
           ></v-text-field>
@@ -34,7 +34,7 @@
         <v-col cols="12" md="6">
           <v-text-field
             v-model="client.email"
-            :rules="emailRules"
+            :rules="rules.email"
             label="Email"
             required
           ></v-text-field>
@@ -70,28 +70,29 @@ const client = ref({
   active: false,
 })
 
-const nameRules = [
-  (value) => !!value || 'Name is required',
-  (value) =>
-    /^[a-zA-Z\s]{3,}$/.test(value) ||
-    'Name must contain only letters and have a minimum length of 3',
-]
-
-const phoneRules = [
-  (value) => !!value || 'Phone is required',
-  (value) =>
-    /^[0-9]{10,11}$/.test(value) || 'Invalid phone format (e.g., 99123456789)',
-]
-
-const documentRules = [
-  (value) => !!value || 'Document is required',
-  (value) => /^[0-9]{11}$/.test(value) || 'Invalid document format (11 digits)',
-]
-
-const emailRules = [
-  (value) => !!value || 'Email is required',
-  (value) => /.+@.+\..+/.test(value) || 'Invalid email format',
-]
+const rules = {
+  name: [
+    (value) => !!value || 'Name is required',
+    (value) =>
+      /^[a-zA-Z\s]{3,}$/.test(value) ||
+      'Name must contain only letters and have a minimum length of 3',
+  ],
+  phone: [
+    (value) => !!value || 'Phone is required',
+    (value) =>
+      /^[0-9]{10,11}$/.test(value) ||
+      'Invalid phone format (99123456789)',
+  ],
+  document: [
+    (value) => !!value || 'Document is required',
+    (value) =>
+      /^[0-9]{11}$/.test(value) || 'Invalid document format (11 digits)',
+  ],
+  email: [
+    (value) => !!value || 'Email is required',
+    (value) => /.+@.+\..+/.test(value) || 'Invalid email format',
+  ],
+}
 
 const saveClient = () => {
   if (isEditing.value) {
