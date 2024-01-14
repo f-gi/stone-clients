@@ -19,19 +19,15 @@
 
 <script setup>
 import ClientItem from './partials/ClientItem.vue'
-import { ref, watchEffect } from 'vue'
-import { useClientsStore } from '@/store/clientsStore' 
+import { ref, computed } from 'vue'
+import { useClientsStore } from '@/store/clientsStore'
 
 const clientsStore = useClientsStore()
-const clients = ref(clientsStore.clients)
+const clients = ref(computed(() => clientsStore.clients))
 
 const handleToggleStatus = (client) => {
   clientsStore.updateClient(client)
 }
-
-watchEffect(() => {
-  clients.value = clientsStore.clients
-})
 </script>
 
 <style scoped>

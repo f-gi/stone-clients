@@ -21,20 +21,21 @@
         />
 
         <div class="d-flex flex-wrap">
-          <v-btn variant="outlined" @click="addProducts" class="mb-2 mb-md-0"
-            >Add Products</v-btn
-          >
-          <v-btn variant="outlined" @click="editClient" class="mb-2 mb-md-0"
-            >Edit</v-btn
-          >
+          <v-btn variant="outlined" @click="addProducts" class="mb-2 mb-md-0">
+            Add Products
+          </v-btn>
+          <v-btn variant="outlined" @click="editClient" class="mb-2 mb-md-0">
+            Edit
+          </v-btn>
           <v-btn
             variant="outlined"
             @click="showDeleteModal = true"
             class="mb-2 mb-md-0"
-            >Delete</v-btn
           >
-        </div></v-card-actions
-      >
+            Delete
+          </v-btn>
+        </div>
+      </v-card-actions>
     </v-list-item>
     <DeleteModal
       :showModal="showDeleteModal"
@@ -89,9 +90,9 @@ watch(
 <style scoped>
 .container {
   max-width: 650px;
-  margin-bottom: 20px; 
-  background-color: #f2f2f2; 
-  padding: 15px; 
+  margin-bottom: 20px;
+  background-color: #f2f2f2;
+  padding: 15px;
   border-radius: 8px;
 }
 .flex-wrap {

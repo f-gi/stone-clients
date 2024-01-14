@@ -3,7 +3,7 @@
     <h1>Product List</h1>
     <v-list>
       <ProductItem
-        v-for="product in products"
+        v-for="product in productList"
         :key="product.id"
         :product="product"
       />
@@ -12,16 +12,12 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue'
+import { ref, computed } from 'vue'
 import { useProductsStore } from '@/store/productsStore'
 import ProductItem from './partials/ProductItem.vue'
 
 const productsStore = useProductsStore()
-const products = ref([])
-
-watchEffect(() => {
-  products.value = productsStore.products
-})
+const productList = ref(computed(() => productsStore.products))
 </script>
 
 <style scoped></style>
