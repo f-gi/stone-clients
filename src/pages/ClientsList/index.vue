@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Menu></Menu>
     <h1>Lista de Clientes</h1>
     <v-container>
       <v-row>
@@ -22,7 +21,6 @@
 import ClientItem from './partials/ClientItem.vue'
 import { ref, watchEffect } from 'vue'
 import { useClientsStore } from '@/store/clientsStore' 
-import Menu from '@/components/Menu.vue'
 
 const clientsStore = useClientsStore()
 const clients = ref(clientsStore.clients)

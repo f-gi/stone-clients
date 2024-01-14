@@ -1,5 +1,4 @@
 <template>
-  <Menu></Menu>
   <v-form v-model="valid">
     <v-container>
       <v-row>
@@ -33,7 +32,6 @@
 import { ref, onMounted } from 'vue'
 import { useProductsStore } from '@/store/productsStore'
 import { useRouter } from 'vue-router'
-import Menu from '@/components/Menu.vue'
 
 const productsStore = useProductsStore()
 const router = useRouter()
