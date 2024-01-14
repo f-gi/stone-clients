@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>Lista de Clientes</h1>
     <v-container>
       <v-row>
@@ -34,4 +34,8 @@ watchEffect(() => {
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped>
+.container {
+  padding: 20px;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="container">
     <v-list-item>
       <v-list-item-title class="headline text-h6 mb-1">
         {{ client.name }}
@@ -10,7 +10,7 @@
       <p><strong>Email:</strong> {{ client.email }}</p>
       <p><strong>Active:</strong> {{ client.active }}</p>
 
-      <v-card-actions>
+      <v-card-actions class="flex-wrap">
         <v-switch
           :input-value="switchStatus"
           label="Active"
@@ -19,10 +19,22 @@
           class="ml-2"
           color="primary"
         />
-        <v-btn variant="outlined" @click="addProducts">Add Products</v-btn>
-        <v-btn variant="outlined" @click="editClient">Edit</v-btn>
-        <v-btn variant="outlined" @click="showDeleteModal = true">Delete</v-btn>
-      </v-card-actions>
+
+        <div class="d-flex flex-wrap">
+          <v-btn variant="outlined" @click="addProducts" class="mb-2 mb-md-0"
+            >Add Products</v-btn
+          >
+          <v-btn variant="outlined" @click="editClient" class="mb-2 mb-md-0"
+            >Edit</v-btn
+          >
+          <v-btn
+            variant="outlined"
+            @click="showDeleteModal = true"
+            class="mb-2 mb-md-0"
+            >Delete</v-btn
+          >
+        </div></v-card-actions
+      >
     </v-list-item>
     <DeleteModal
       :showModal="showDeleteModal"
@@ -74,4 +86,19 @@ watch(
 )
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  max-width: 650px;
+  margin-bottom: 20px; 
+  background-color: #f2f2f2; 
+  padding: 15px; 
+  border-radius: 8px;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-wrap button {
+  margin-bottom: 10px;
+}
+</style>

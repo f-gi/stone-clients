@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="container">
     <v-list-item>
       <v-list-item-title class="headline text-h6 mb-1">
         {{ product.name }}
@@ -65,4 +65,12 @@ watch(
 )
 </script>
 
-<style scoped></style>
+<style scoped>
+.container {
+  max-width: 650px;
+  margin-bottom: 20px; 
+  background-color: #f2f2f2; 
+  padding: 15px; 
+  border-radius: 8px;
+}
+</style>
