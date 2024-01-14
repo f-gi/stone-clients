@@ -1,6 +1,6 @@
-# Vuetify (Default)
+# stone-clients
 
-This is the official scaffolding tool for Vuetify, designed to give you a head start in building your new Vuetify application. It sets up a base template with all the necessary configurations and standard directory structure, enabling you to begin development without the hassle of setting up the project from scratch.
+This is a system designed to register clients and products, associate specific products with individual clients, and provide functionalities for listing, editing, and activating/deactivating both. The goal is to enable the commercial department to manage each client's access to products on the platform.
 
 ## ❗️ Important Links
 
@@ -18,12 +18,10 @@ Set up your project using your preferred package manager. Use the corresponding 
 |---------------------------------------------------------------|----------------|
 | [yarn](https://yarnpkg.com/getting-started)                   | `yarn install` |
 | [npm](https://docs.npmjs.com/cli/v7/commands/npm-install)     | `npm install`  |
-| [pnpm](https://pnpm.io/installation)                          | `pnpm install` |
-| [bun](https://bun.sh/#getting-started)                        | `bun install`  |
 
-After completing the installation, your environment is ready for Vuetify development.
+After completing the installation, your environment is ready.
 
-## ✨ Features
+## 🛠️ Tools
 
 - 🖼️ **Optimized Front-End Stack**: Leverage the latest Vue 3 and Vuetify 3 for a modern, reactive UI development experience. [Vue 3](https://v3.vuejs.org/) | [Vuetify 3](https://vuetifyjs.com/en/)
 - 🗃️ **State Management**: Integrated with [Pinia](https://pinia.vuejs.org/), the intuitive, modular state management solution for Vue.
@@ -33,11 +31,8 @@ After completing the installation, your environment is ready for Vuetify develop
 
 These features are curated to provide a seamless development experience from setup to deployment, ensuring that your Vuetify application is both powerful and maintainable.
 
-## 💡 Usage
+## ▶️ Starting the Development Server
 
-This section covers how to start the development server and build your project for production.
-
-### Starting the Development Server
 
 To start the development server with hot-reload, run the following command. The server will be accessible at [http://localhost:3000](http://localhost:3000):
 
@@ -59,19 +54,4 @@ yarn build
 
 Once the build process is completed, your application will be ready for deployment in a production environment.
 
-## 💪 Support Vuetify Development
 
-This project is built with [Vuetify](https://vuetifyjs.com/en/), a UI Library with a comprehensive collection of Vue components. Vuetify is an MIT licensed Open Source project that has been made possible due to the generous contributions by our [sponsors and backers](https://vuetifyjs.com/introduction/sponsors-and-backers/). If you are interested in supporting this project, please consider:
-
-- [Requesting Enterprise Support](https://support.vuetifyjs.com/)
-- [Sponsoring John on Github](https://github.com/users/johnleider/sponsorship)
-- [Sponsoring Kael on Github](https://github.com/users/kaelwd/sponsorship)
-- [Supporting the team on Open Collective](https://opencollective.com/vuetify)
-- [Becoming a sponsor on Patreon](https://www.patreon.com/vuetify)
-- [Becoming a subscriber on Tidelift](https://tidelift.com/subscription/npm/vuetify)
-- [Making a one-time donation with Paypal](https://paypal.me/vuetify)
-
-## 📑 License
-[MIT](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2016-present Vuetify, LLC
