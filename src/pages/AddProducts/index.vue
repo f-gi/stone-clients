@@ -1,4 +1,5 @@
 <template>
+    <Menu></Menu>
   <v-card>
     <v-list-item>
       <v-list-item-title class="headline text-h6 mb-1">
@@ -29,6 +30,7 @@ import { ref, onMounted } from 'vue'
 import { useClientsStore } from '@/store/clientsStore'
 import { useProductsStore } from '@/store/productsStore'
 import { useRouter } from 'vue-router'
+import Menu from '@/components/Menu.vue'
 
 const clientsStore = useClientsStore()
 const productsStore = useProductsStore()

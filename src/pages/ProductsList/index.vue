@@ -1,4 +1,5 @@
 <template>
+  <Menu></Menu>
   <v-container>
     <h1>Product List</h1>
     <v-list>
@@ -15,6 +16,7 @@
 import { ref, watchEffect } from 'vue'
 import { useProductsStore } from '@/store/productsStore'
 import ProductItem from './partials/ProductItem.vue'
+import Menu from '@/components/Menu.vue'
 
 const productsStore = useProductsStore()
 const products = ref([])

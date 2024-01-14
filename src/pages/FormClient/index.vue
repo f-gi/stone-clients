@@ -1,4 +1,5 @@
 <template>
+  <Menu></Menu>
   <v-form v-model="valid">
     <v-container>
       <v-row>
@@ -56,6 +57,7 @@
 import { ref, onMounted } from 'vue'
 import { useClientsStore } from '@/store/clientsStore'
 import { useRouter } from 'vue-router'
+import Menu from '@/components/Menu.vue'
 
 const clientsStore = useClientsStore()
 const router = useRouter()
@@ -80,8 +82,7 @@ const rules = {
   phone: [
     (value) => !!value || 'Phone is required',
     (value) =>
-      /^[0-9]{10,11}$/.test(value) ||
-      'Invalid phone format (99123456789)',
+      /^[0-9]{10,11}$/.test(value) || 'Invalid phone format (99123456789)',
   ],
   document: [
     (value) => !!value || 'Document is required',
@@ -117,7 +118,9 @@ const resetClient = () => {
 onMounted(() => {
   const routeClientId = router.currentRoute.value.params.id
   if (routeClientId) {
-    const existingClient = clientsStore.clients.find((c) => c.id === routeClientId)
+    const existingClient = clientsStore.clients.find(
+      (c) => c.id === routeClientId,
+    )
     if (existingClient) {
       client.value = { ...existingClient }
       isEditing.value = true
