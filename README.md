@@ -2,14 +2,6 @@
 
 This is a system designed to register clients and products, associate specific products with individual clients, and provide functionalities for listing, editing, and activating/deactivating both. The goal is to enable the commercial department to manage each client's access to products on the platform.
 
-## ❗️ Important Links
-
-- 📄 [Docs](https://vuetifyjs.com/)
-- 🚨 [Issues](https://issues.vuetifyjs.com/)
-- 🏬 [Store](https://store.vuetifyjs.com/)
-- 🎮 [Playground](https://play.vuetifyjs.com/)
-- 💬 [Discord](https://community.vuetifyjs.com)
-
 ## 💿 Install
 
 Set up your project using your preferred package manager. Use the corresponding command to install the dependencies:
